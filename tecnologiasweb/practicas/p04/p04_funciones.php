@@ -57,6 +57,23 @@ function multiplo_aleatorio($nume) {
     } while (true);
     echo "<br><br>$multiplo es múltiplo de $nume con do_while";
 }
+//Ejercicio 4 funcion
+function ascii()
+{
+    $letras = array();
+
+    for ($n = 97; $n <= 122; $n++) {
+        $letras[$n] = chr($n);
+    }
+
+    echo '<tr><th>ASCII</th><th>LETRAS</th>';
+    echo '</tr>';
+
+    foreach ($letras as $key => $value) {
+        echo '<tr><td>'.$key.'</td><td>'.$value.'</td>';
+        echo '</tr>';
+    }
+}
 
 
 
