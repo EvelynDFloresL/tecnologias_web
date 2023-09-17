@@ -8,8 +8,7 @@ function multiplo($numero)
         echo "El número $numero no es múltiplo de 5 y 7 <br>";
     }
 }
-
-
+// Ejercicio 2 funcion
 function secuencia() {
     $matriz = [];
     $iteraciones = 0;
@@ -34,6 +33,33 @@ function secuencia() {
     echo "<br>Número de Iteraciones: $iteraciones";
     echo "<br>Cantidad de Números Generados: " . count($matriz) * 3;
 }
+// Ejercicio 3 funcion
+function multiplo_aleatorio($nume) {
+    // Bucle while
+    $multiplo = 0;
+    while (true) {
+        $nm = rand(1, 100);
+        if ($nm % $nume == 0) {
+            $multiplo = $nm;
+            break;
+        }
+    }
+    echo "$multiplo es múltiplo de $nume con while";
+
+    // Bucle do-while
+    $multiplo = 0;
+    do {
+        $nm = rand(1, 100);
+        if ($nm % $nume == 0) {
+            $multiplo = $nm;
+            break;
+        }
+    } while (true);
+    echo "<br><br>$multiplo es múltiplo de $nume con do_while";
+}
+
+
+
 
 
 

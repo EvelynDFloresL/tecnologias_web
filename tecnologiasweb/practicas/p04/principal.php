@@ -32,11 +32,19 @@ generados: 12 números obtenidos en 4 iteraciones</p>
 
 </div>
 
+<div class="ejercicio3">
 <h2>Ejercicio 3</h2>
 <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente, <br>
 pero que además sea múltiplo de un número dado. <br>
 * Crear una variante de este script utilizando el ciclo do-while. <br>
 * El número dado se debe obtener vía GET.</p>
+
+<?php
+$nume = $_GET['nume'];
+multiplo_aleatorio($nume);
+?>
+</div>
+
 <h2>Ejercicio 4</h2>
 <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’ <br>
 a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner <br>
