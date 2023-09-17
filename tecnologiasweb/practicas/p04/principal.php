@@ -41,7 +41,7 @@
             * El número dado se debe obtener vía GET.</p>
 
         <?php
-        $nume = $_GET['nume'];
+        $nume = $_GET['numero'];
         multiplo_aleatorio($nume);
         ?>
     </div>
