@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Productos</title>
+  <title>Productos</title> 
 
   <script type="text/javascript">
     function validarForm() {
@@ -69,7 +69,7 @@
       }
 
       if (imagenValue === "") {
-        imagenInput.value = "img/ejemplo.png"; 
+        imagenInput.value = "img/ejemplo.png";
       }
       return true;
     }
@@ -77,7 +77,7 @@
     function sendFormData(_id, nombre, marca, modelo, precio, unidades, detalles, imagen) {
       var form = document.createElement("form");
       form.method = "POST";
-      form.action = "formulario_productos_v2.php";
+      form.action = "formulario_productos_v3.php";
 
       // Crea campos ocultos para enviar los datos
       var idInput = document.createElement("input");

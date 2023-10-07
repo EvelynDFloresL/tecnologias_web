@@ -32,7 +32,7 @@ if ($link->connect_errno) {
         echo '<br><strong>Precio: </strong>' . $precio;
         echo '<br><strong>Detalles: </strong>' . $detalles;
         echo '<br><strong>Unidades: </strong>' . $unidades;
-        echo '<br><strong>Imagen: </strong><br> <img src=https://localhost/tecnologias_web/tecnologiasweb/practicas/p07/' . $imagen . ' width="200px" height="200px" />';
+        echo '<br><strong>Imagen: </strong><br> <img src=https://localhost/tecnologias_web/tecnologiasweb/practicas/p07/' . $imagen . ' width="200px" height="300px" />';
         echo '</p>';
     } else {
         echo '<br><strong>Error al insertar el producto en la base de datos.</strong>';
