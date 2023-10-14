@@ -9,16 +9,12 @@ var baseJSON = {
   };
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
-function buscarID(e) {
-    /**
-     * Revisar la siguiente información para entender porqué usar event.preventDefault();
-     * http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/#:~:text=PreventDefault()%20se%20utiliza%20para,escuche%20a%20trav%C3%A9s%20del%20DOM
-     * https://www.geeksforgeeks.org/when-to-use-preventdefault-vs-return-false-in-javascript/
-     */
+function buscar(e) { 
+
     e.preventDefault();
 
     // SE OBTIENE EL ID A BUSCAR
-    var id = document.getElementById('search').value;
+    var busqueda = document.getElementById('search').value; //modificado
 
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
@@ -27,37 +23,39 @@ function buscarID(e) {
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
-            console.log('[CLIENTE]\n'+client.responseText);
-            
+            console.log('[CLIENTE]\n' + client.responseText);
             // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
             let productos = JSON.parse(client.responseText);    // similar a eval('('+client.responseText+')');
-            
             // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
-            if(Object.keys(productos).length > 0) {
+            if (Object.keys(productos).length > 0) {
                 // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
-                let descripcion = '';
-                    descripcion += '<li>precio: '+productos.precio+'</li>';
-                    descripcion += '<li>unidades: '+productos.unidades+'</li>';
-                    descripcion += '<li>modelo: '+productos.modelo+'</li>';
-                    descripcion += '<li>marca: '+productos.marca+'</li>';
-                    descripcion += '<li>detalles: '+productos.detalles+'</li>';
-                
-                // SE CREA UNA PLANTILLA PARA CREAR LA(S) FILA(S) A INSERTAR EN EL DOCUMENTO HTML
                 let template = '';
+                productos.forEach(function(producto) {
+                    let descripcion = '';
+                    descripcion += '<li>precio: $' + producto.precio + '</li>';
+                    descripcion += '<li>unidades: ' + producto.unidades + '</li>';
+                    descripcion += '<li>modelo: ' + producto.modelo + '</li>';
+                    descripcion += '<li>marca: ' + producto.marca + '</li>';
+                    descripcion += '<li>detalles: ' + producto.detalles + '</li>';
+            
+                    // SE CREA UNA PLANTILLA PARA CREAR LA(S) FILA(S) A INSERTAR EN EL DOCUMENTO HTML
                     template += `
                         <tr>
-                            <td>${productos.id}</td>
-                            <td>${productos.nombre}</td>
+                            <td>${producto.id}</td>
+                            <td>${producto.nombre}</td>
                             <td><ul>${descripcion}</ul></td>
                         </tr>
                     `;
-
+                });
                 // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
                 document.getElementById("productos").innerHTML = template;
+            }else{
+                // Mostrar mensaje de "Producto no encontrado"
+                document.getElementById("productos").innerHTML = '<p>Producto no encontrado</p>';
             }
         }
     };
-    client.send("id="+id);
+    client.send("buscar=" + busqueda); //modificado
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
