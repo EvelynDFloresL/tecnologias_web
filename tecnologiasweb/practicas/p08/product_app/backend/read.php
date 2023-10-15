@@ -14,8 +14,8 @@
 
             if(!is_null($row)) {
                 // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
-                foreach ($row as $num => $registro) {            // Se recorren tuplas
-                    foreach ($registro as $key => $value) {      // Se recorren campos
+                foreach ($row as $num => $registro) {            
+                    foreach ($registro as $key => $value) {     
                         $data[$num][$key] = $value;
                     }
                 }

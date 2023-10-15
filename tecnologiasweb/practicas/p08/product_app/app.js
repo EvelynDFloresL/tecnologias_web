@@ -5,7 +5,7 @@ var baseJSON = {
     "modelo": "XX-000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/default.png"
+    "imagen": "img/ejemplo.png"
   };
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
@@ -58,31 +58,64 @@ function buscar(e) {
     client.send("buscar=" + busqueda); //modificado
 }
 
-// FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
-function agregarProducto(e) {
+function validarProducto(producto) {
+    var val = 0;
+  
+    if (producto.nombre === '' || producto.nombre.length > 100) {
+      val = 1;
+      alert('Escriba el nombre con el formato correcto');
+    }
+    if (producto.marca === '') {
+      val = 1;
+      alert('Escriba la marca del producto');
+    }
+    if (producto.precio < 99.99) {
+      val = 1;
+      alert('El precio debe ser mayor a $99.99');
+    }
+    if (producto.unidades < 0) {
+      val = 1;
+      alert('Numero invalido de unidades');
+    }
+    if (producto.modelo === '' || producto.modelo.length > 25) {
+      val = 1;
+      alert('Escriba el modelo del producto');
+    }
+    if (producto.detalles.length > 250) {
+      val = 1;
+      alert('El tamaño del atributo detalles ha superado el limite');
+    }
+    if (producto.imagen === '') {
+      producto.imagen = 'img/ejemplo.png';
+    }
+  
+    return val === 0;
+  }
+
+  // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
+  function agregarProducto(e) {
     e.preventDefault();
-
-    // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+  
     var productoJsonString = document.getElementById('description').value;
-    // SE CONVIERTE EL JSON DE STRING A OBJETO
-    var finalJSON = JSON.parse(productoJsonString);
-    // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = document.getElementById('name').value;
-    // SE OBTIENE EL STRING DEL JSON FINAL
-    productoJsonString = JSON.stringify(finalJSON,null,2);
-
-    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-    var client = getXMLHttpRequest();
-    client.open('POST', './backend/create.php', true);
-    client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
-    client.onreadystatechange = function () {
-        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+    var producto = JSON.parse(productoJsonString);
+    producto.nombre = document.getElementById('name').value;
+  
+    if (validarProducto(producto)) {
+      productoJsonString = JSON.stringify(producto, null, 2);
+  
+      var client = getXMLHttpRequest();
+      client.open('POST', './backend/create.php', true);
+      client.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      client.onreadystatechange = function () {
         if (client.readyState == 4 && client.status == 200) {
-            console.log(client.responseText);
+          console.log(client.responseText);
+          window.alert(client.responseText);
         }
-    };
-    client.send(productoJsonString);
-}
+      };
+  
+      client.send(productoJsonString);
+    }
+  }
 
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
 function getXMLHttpRequest() {
