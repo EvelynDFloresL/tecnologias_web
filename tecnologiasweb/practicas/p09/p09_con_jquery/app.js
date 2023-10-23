@@ -5,7 +5,7 @@ var baseJSON = {
     "modelo": "XX-000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/ejemplo.png"
+    "imagen": "img/default.png"
 };
 
 function init() {
@@ -72,7 +72,49 @@ $(document).ready(function () {
     });
 
     $('#product-form').submit(function (e) {
-        let datos = JSON.parse($('#description').val());
+        e.preventDefault(); // Evita que el formulario se envíe automáticamente
+        // Obtener valores de los campos del formulario
+        let nombre = $('#name').val();
+        let descripcion = $('#description').val();
+        let product_Id = $('#product_Id').val();
+        // Parsear la descripción en un objeto
+        let datos = JSON.parse(descripcion);
+
+        // Validación del producto con las condiciones que proporcionaste
+    var val = 0;
+    if (nombre === '' || nombre.length > 100) {
+        val = 1;
+        alert('Escriba el nombre con el formato correcto');
+    }
+    if (datos.marca === '') {
+        val = 1;
+        alert('Escriba la marca del producto');
+    }
+    if (datos.precio < 99.99) {
+        val = 1;
+        alert('El precio debe ser mayor a $99.99');
+    }
+    if (datos.unidades < 0) {
+        val = 1;
+        alert('Número inválido de unidades');
+    }
+    if (datos.modelo === '' || datos.modelo.length > 25) {
+        val = 1;
+        alert('Escriba el modelo del producto');
+    }
+    if (datos.detalles.length > 250) {
+        val = 1;
+        alert('El tamaño del atributo detalles ha superado el límite');
+    }
+    if (datos.imagen === '') {
+        datos.imagen = 'img/ejemplo.png';
+    }
+
+    if (val !== 0) {
+        // Si alguna validación falla, no se envía el formulario
+        return;
+    }
+        
         const postData = {
             nombre: $('#name').val(),
             precio: datos["precio"],
@@ -99,7 +141,7 @@ $(document).ready(function () {
             let mensaje = res.message;
             alert(mensaje);
         });
-        e.preventDefault();
+       
     });
 
     function fetchProducts() {

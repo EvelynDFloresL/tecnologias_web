@@ -7,7 +7,7 @@ $data = array(
     'status'  => 'error',
     'message' => 'Ya existe un producto con ese nombre'
 );
-if (!empty($producto)) { 
+if (!empty($producto)) {
     // SE TRANSFORMA EL STRING DEL JASON A OBJETO
     $jsonOBJ = json_decode($producto);
     // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
