@@ -23,7 +23,7 @@
             } else {
                 $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
             }
-        }
+        } 
 
         $result->free();
         // Cierra la conexion
