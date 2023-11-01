@@ -1,28 +1,18 @@
 <?php
-// Importa la clase Products del namespace database
 use database\Productos;
 
 require_once __DIR__.'/API/Productos.php';
 
-// Crea una instancia de la clase Productos
 $productos = new Productos('marketzone');
 
-// Verifica si se ha enviado una solicitud POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Convierte los datos POST en un objeto JSON
-    $productoData = json_decode(json_encode($_POST));
-    
-    // Llama al método para agregar un producto
-    $productos->agregarProducto($productoData);
-    
-    // Obtiene la respuesta en formato JSON
-    $response = $productos->getResponse();
-    
-    // Devuelve la respuesta al cliente
-    echo $response;
+// Verifica si se ha enviado información del producto desde el cliente
+if ($productoJSON = file_get_contents('php://input')) {
+    // Llama a la función para agregar un producto desde la información del cliente
+    $resultadoAgregacion = $productos->agregarProductoDesdeCliente($productoJSON);
+    // Devuelve el resultado de la agregación en formato JSON
+    echo json_encode($resultadoAgregacion, JSON_PRETTY_PRINT);
 } else {
-    // Manejo de error: No se recibió una solicitud POST
-    $response = array('status' => 'error', 'message' => 'No se recibió una solicitud POST');
+    $response = array('status' => 'error', 'message' => 'No se recibió información del producto');
     echo json_encode($response, JSON_PRETTY_PRINT);
 }
 

@@ -1,28 +1,25 @@
 <?php
+use database\Productos;
+require_once __DIR__.'/API/Productos.php';
 
-include_once __DIR__ . '/database.php';
+$productos = new Productos('marketzone');
 
+// Verifica si se ha enviado un parámetro ID
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    $conexion->set_charset("utf8");
-    $sql = "SELECT * from productos WHERE id = {$id}";
 
-    $result = $conexion->query($sql);
-
-    $json = array();
-    while ($row = mysqli_fetch_array($result)) {
-        $json[] = array(
-            'nombre' => $row['nombre'],
-            'precio' => $row['precio'],
-            'unidades' => $row['unidades'],
-            'modelo' => $row['modelo'],
-            'marca' => $row['marca'], 
-            'detalles' => $row['detalles'],
-            'imagen' => $row['imagen'],
-            'id' => $row['id']
-        );
+    // Llama a la función para obtener el producto por su ID
+    $producto = $productos->obtenerProductoPorId($id);
+    if ($producto) {
+        // Devuelve el producto en formato JSON
+        echo $producto;
+    } else {
+        $response = array('status' => 'error', 'message' => 'No se encontró el producto');
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
-    $jsonstring = json_encode($json[0]);
-    echo $jsonstring;
+} else {
+    $response = array('status' => 'error', 'message' => 'No se proporcionó un ID');
+    echo json_encode($response, JSON_PRETTY_PRINT);
 }
+
 ?>

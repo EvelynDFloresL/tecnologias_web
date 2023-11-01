@@ -1,25 +1,17 @@
 <?php
-    include_once __DIR__.'/database.php';
-
-    // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
-    $data = array(
-        'status'  => 'error',
-        'message' => 'La consulta falló'
-    );
-    // SE VERIFICA HABER RECIBIDO EL ID
-    if( isset($_POST['id']) ) {
-        $id = $_POST['id'];
-        // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
-        if ( $conexion->query($sql) ) {
-            $data['status'] =  "success";
-            $data['message'] =  "Producto eliminado";
-		} else {
-            $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
-        }
-		$conexion->close();
-    }
-    
-    // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-    echo json_encode($data, JSON_PRETTY_PRINT);
+   use database\Productos;
+   require_once __DIR__.'/API/Productos.php';
+   $productos = new Productos('marketzone');
+   
+   // Verifica si se ha enviado un parámetro ID
+   if (isset($_POST['id'])) {
+       $id = $_POST['id'];
+       // Llama a la función para eliminar el producto y pasa el ID
+       $resultadoEliminacion = $productos->eliminarProducto($id);
+       // Devuelve el resultado de la eliminación en formato JSON
+       echo json_encode($resultadoEliminacion, JSON_PRETTY_PRINT);
+   } else {
+       $response = array('status' => 'error', 'message' => 'No se proporcionó un ID');
+       echo json_encode($response, JSON_PRETTY_PRINT);
+   }
 ?>
