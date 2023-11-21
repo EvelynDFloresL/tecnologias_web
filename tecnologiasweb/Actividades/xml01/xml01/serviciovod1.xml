@@ -1,0 +1,113 @@
+<CatalogoVOd>
+    <cuenta>
+        <correo>juanito@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Juan</usuario>
+                <idioma>Aleman</idioma>
+            </perfil>
+            <perfil>
+                <usuario>Luis</usuario>
+                <idioma>Chino</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Romance</nombre>
+                <titulo>
+                    <nombre>Persuasion</nombre>
+                    <duracion>1:55:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Titanic</nombre>
+                    <duracion>3:15:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Orgullo y Prejuicio</nombre>
+                    <duracion>2:09:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La La Land</nombre>
+                    <duracion>2:08:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Bajo el sol de la toscana</nombre>
+                    <duracion>1:53:00</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Accion</nombre>
+                <titulo>
+                    <nombre>John Wick</nombre>
+                    <duracion>1:41:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Mad Max: Fury Road</nombre>
+                    <duracion>2:00:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Die Hard</nombre>
+                    <duracion>2:12:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Dark Knight</nombre>
+                    <duracion>2:32:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Kill Bill: Vol. 1</nombre>
+                    <duracion>1:51:00</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>The Office</nombre>
+                    <duracion>25:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Friends</nombre>
+                    <duracion>22:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Brooklyn Nine-Nine</nombre>
+                    <duracion>23:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Parks and Recreation</nombre>
+                    <duracion>22:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Marvelous Mrs. Maisel</nombre>
+                    <duracion>45:00</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Documental</nombre>
+                <titulo>
+                    <nombre>Our Planet</nombre>
+                    <duracion>1:00:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Planet Earth</nombre>
+                    <duracion>45:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Making a Murderer</nombre>
+                    <duracion>1:32:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Last Dance</nombre>
+                    <duracion>56:00</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Cosmos: A Spacetime Odyssey</nombre>
+                    <duracion>1:13:00</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOd>

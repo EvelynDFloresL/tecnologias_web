@@ -1,0 +1,44 @@
+<CatalogoVOd>
+    <cuenta correo ="juanito@hotmail.com">
+        <perfiles>
+            <perfil usuario ="Juan" idioma ="Aleman"></perfil>
+            <perfil usuario ="Luis" idioma ="Chino"></perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero nombre="Romance">
+                <titulo nombre ="Persuasion" duracion ="1:55:00"></titulo>
+                <titulo nombre ="Titanic" duracion ="3:15:00"></titulo>
+                <titulo nombre ="Orgullo y Prejuicio" duracion ="2:09:00"></titulo>
+                <titulo  nombre ="La La Land" duracion ="2:08:00"></titulo>
+                <titulo  nombre ="Bajo el sol de la toscana" duracion ="1:53:00"></titulo>
+            </genero>
+            <genero nombre ="Accion">
+                <titulo  nombre ="John Wick" duracion ="1:41:00"></titulo>
+                <titulo  nombre ="Mad Max: Fury Road" duracion ="2:00:00"></titulo>
+                <titulo  nombre ="Die Hard" duracion ="2:12:00"></titulo>
+                <titulo nombre ="The Dark Knight" duracion ="2:32:00"></titulo>
+                <titulo  nombre ="Kill Bill: Vol. 1" duracion ="1:51:00"></titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero nombre = "Comedia">
+                <titulo  nombre ="The Office" duracion ="25:00">
+                </titulo >
+                <titulo  nombre ="Friends" duracion ="22:00"></titulo>
+                <titulo  nombre ="Brooklyn Nine-Nine" duracion ="23:00"></titulo>
+                <titulo  nombre ="Parks and Recreation" duracion ="22:00"></titulo>
+                <titulo  nombre ="The Marvelous Mrs. Maisel" duracion ="45:00"></titulo>
+            </genero>
+            <genero>
+                <nombre>Documental</nombre>
+                <titulo  nombre ="Our Planet" duracion ="1:00:00"></titulo>
+                <titulo  nombre ="Planet Earth" duracion ="45:00"></titulo>
+                <titulo  nombre ="Making a Murderer" duracion ="1:32:00">
+                <titulo  nombre ="The Last Dance" duracion ="56:00"></titulo>
+                <titulo  nombre ="Cosmos: A Spacetime Odyssey" duracion ="1:13:00"></titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOd>

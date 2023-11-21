@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="25" visitas="10M" puntos="80">
+        <nombre>Evelyn</nombre>
+        <correo>evelynflores@gmail.com</correo>
+        <telefono tipo="movil">5574255152</telefono>
+        <telefono tipo="casa">2223916422</telefono>
+    </tarjeta>
+    <tarjeta noserie="00123" visitas="28" puntos="100">
+        <nombre>Josue Encarnacion Hernandez</nombre>
+        <correo>josueeh00123@cinefan.com</correo>
+        <telefono tipo="movil">2221222122</telefono>
+    </tarjeta>
+</cinefanatico>
